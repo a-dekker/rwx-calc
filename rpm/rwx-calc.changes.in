@@ -1,0 +1,26 @@
+# Rename this file as rwx-calc.changes to include changelog
+# entries in your RPM file.
+#
+# Add new changelog entries following the format below.
+# Add newest entries to the top of the list.
+# Separate entries from eachother with a blank line.
+
+# * date Author's Name <author's email> version-release
+# - Summary of changes
+
+* Mon Jan 5 2015 Jack Tar <jack.tar@example.com> 0.0.1-5
+- Version info added, minor button change
+
+* Mon Nov 3 2014 Jack Tar <jack.tar@example.com> 0.0.1-4
+- changed button appearance
+
+* Sat Oct 18 2014 Jack Tar <jack.tar@example.com> 0.0.1-3
+- Adapted for other resolutions (tested on Nexus 7 v.2012)
+
+* Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-2
+- Cosmetic changes
+
+* Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
+- Initial release
+
+
