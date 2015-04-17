@@ -14,10 +14,10 @@ Name:       rwx-calc
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Assistant for calculating Unix like file permissions
 Version:    0.1
-Release:    5
+Release:    6
 Group:      Qt/Qt
 License:    LICENSE
-URL:        http://example.org/
+URL:        https://github.com/a-dekker/rwx-calc
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  rwx-calc.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+Assistant for calculating Unix like file permissions
 
 
 %prep

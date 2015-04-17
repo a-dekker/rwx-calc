@@ -1,18 +1,18 @@
 Name: rwx-calc
 Summary: Assistant for calculating Unix like file permissions
 Version: 0.1
-Release: 5
+Release: 6
 # The contents of the Group field must be one of the groups listed here:
 # http://gitorious.org/meego-developer-tools/spectacle/blobs/master/data/GROUPS
 Group: Qt/Qt
-URL: http://example.org/
+URL: https://github.com/a-dekker/rwx-calc
 License: LICENSE
 # This must be generated before uploading a package to a remote build service.
 # Usually this line does not need to be modified.
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my SailfishOS Application
+  Assistant for calculating Unix like file permissions
 Configure: none
 # The qtc5 builder inserts macros to allow QtCreator to have fine
 # control over qmake/make execution

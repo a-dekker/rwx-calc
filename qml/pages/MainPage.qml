@@ -232,6 +232,7 @@ Page {
                 TextSwitch {
                     id: readUser
                     text: "read"
+                    rightMargin: Theme.paddingSmall
                     highlighted: checked
                     onClicked: {
                         rwxButtonPressed()
@@ -241,6 +242,8 @@ Page {
                 TextSwitch {
                     id: readGroup
                     text: "read"
+                    rightMargin: Theme.paddingSmall
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {
@@ -250,6 +253,7 @@ Page {
                 TextSwitch {
                     id: readOther
                     text: "read"
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {
@@ -263,6 +267,7 @@ Page {
                 TextSwitch {
                     id: writeUser
                     text: "write"
+                    rightMargin: Theme.paddingSmall
                     highlighted: checked
                     onClicked: {
                         rwxButtonPressed()
@@ -272,6 +277,8 @@ Page {
                 TextSwitch {
                     id: writeGroup
                     text: "write"
+                    rightMargin: Theme.paddingSmall
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     onClicked: {
                         rwxButtonPressed()
@@ -281,6 +288,7 @@ Page {
                 TextSwitch {
                     id: writeOther
                     text: "write"
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {
@@ -294,6 +302,7 @@ Page {
                 TextSwitch {
                     id: execUser
                     text: "exec"
+                    rightMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {
@@ -303,6 +312,8 @@ Page {
                 TextSwitch {
                     id: execGroup
                     text: "exec"
+                    rightMargin: Theme.paddingSmall
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     onClicked: {
                         rwxButtonPressed()
@@ -312,6 +323,7 @@ Page {
                 TextSwitch {
                     id: execOther
                     text: "exec"
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {
@@ -344,11 +356,12 @@ Page {
                 anchors.topMargin: 30
             }
             Row {
-                x: Theme.paddingSmall
                 width: parent.width
+                x: Theme.paddingSmall
                 TextSwitch {
                     id: setuid
                     text: "setuid"
+                    rightMargin: Theme.paddingSmall
                     highlighted: checked
                     onClicked: {
                         rwxButtonPressed()
@@ -358,6 +371,8 @@ Page {
                 TextSwitch {
                     id: setgid
                     text: "setgid"
+                    rightMargin: Theme.paddingSmall
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {
@@ -367,6 +382,7 @@ Page {
                 TextSwitch {
                     id: stickybit
                     text: "sticky"
+                    leftMargin: Theme.paddingSmall
                     highlighted: checked
                     width: parent.width / 3
                     onClicked: {

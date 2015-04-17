@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Apr 17 2015 Jack Tar <jack.tar@example.com> 0.0.1-6
+- Fixed: looks like upgrade12 caused some wordwrapping
+
 * Mon Jan 5 2015 Jack Tar <jack.tar@example.com> 0.0.1-5
 - Version info added, minor button change
 
@@ -22,5 +25,3 @@
 
 * Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
 - Initial release
-
-
