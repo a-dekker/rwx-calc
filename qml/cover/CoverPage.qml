@@ -45,7 +45,7 @@ CoverBackground {
             text: "rwx-calc"
         }
         Image {
-           source: "/usr/share/icons/hicolor/86x86/apps/rwx-calc.png"
+           source: "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png"
            anchors.horizontalCenter: parent.horizontalCenter
         }
         Label {

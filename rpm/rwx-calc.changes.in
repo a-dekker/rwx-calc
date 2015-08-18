@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Aug 17 2015 Jack Tar <jack.tar@example.com> 0.0.2-0
+- Harbourized version
+
 * Mon Apr 17 2015 Jack Tar <jack.tar@example.com> 0.0.1-6
 - Fixed: looks like upgrade12 caused some wordwrapping
 

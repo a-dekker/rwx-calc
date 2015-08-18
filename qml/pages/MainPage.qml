@@ -189,14 +189,12 @@ Page {
                 text: qsTr("Permissions calculator")
                 font.bold: true
             }
-            Rectangle {
+            Separator {
                 id: splitter
-                color: "#999999"
-                x: 20
-                width: parent.width - 40
-                height: 2
-                anchors.leftMargin: 20
-                anchors.topMargin: 30
+                color: Theme.primaryColor
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Qt.AlignHCenter
             }
             Row {
                 x: Theme.paddingLarge
@@ -217,14 +215,12 @@ Page {
                     color: Theme.secondaryColor
                 }
             }
-            Rectangle {
+            Separator {
                 id: splitter2
-                color: "#999999"
-                x: 20
-                width: parent.width - 40
-                height: 2
-                anchors.leftMargin: 20
-                anchors.topMargin: 30
+                color: Theme.primaryColor
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Qt.AlignHCenter
             }
             Row {
                 x: Theme.paddingSmall
@@ -331,14 +327,12 @@ Page {
                     }
                 }
             }
-            Rectangle {
+            Separator {
                 id: splitter3
-                color: "#999999"
-                x: 20
-                width: parent.width - 40
-                height: 2
-                anchors.leftMargin: 20
-                anchors.topMargin: 30
+                color: Theme.primaryColor
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Qt.AlignHCenter
             }
             Label {
                 x: Theme.paddingLarge
@@ -346,14 +340,12 @@ Page {
                 text: qsTr("Special")
                 color: Theme.secondaryColor
             }
-            Rectangle {
+            Separator {
                 id: splitter4
-                color: "#999999"
-                x: 20
-                width: parent.width - 40
-                height: 2
-                anchors.leftMargin: 20
-                anchors.topMargin: 30
+                color: Theme.primaryColor
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Qt.AlignHCenter
             }
             Row {
                 width: parent.width
@@ -390,14 +382,12 @@ Page {
                     }
                 }
             }
-            Rectangle {
+            Separator {
                 id: splitter5
-                color: "#999999"
-                x: 20
-                width: parent.width - 40
-                height: 2
-                anchors.leftMargin: 20
-                anchors.topMargin: 30
+                color: Theme.primaryColor
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Qt.AlignHCenter
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter

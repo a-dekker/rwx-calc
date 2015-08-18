@@ -1,5 +1,4 @@
-rwx-calc
-----------
+# rwx-calc
 Rwx-calc is a Sailfish application to calculate Unix/Linux permissions.
 
 

@@ -34,14 +34,11 @@ Dialog {
         PageHeader {
             title: " "
         }
-        Rectangle {
-            id: splitter
-            color: "#999999"
-            x: 20
-            width: parent.width - 40
-            height: 2
-            anchors.leftMargin: 20
-            anchors.topMargin: 30
+        Separator {
+            color: Theme.primaryColor
+            width: parent.width
+            anchors.horizontalCenter: parent.horizontalCenter
+            horizontalAlignment: Qt.AlignHCenter
         }
         Row {
             x: Theme.paddingLarge
@@ -67,14 +64,11 @@ Dialog {
                 color: Theme.secondaryColor
             }
         }
-        Rectangle {
-            id: splitter2
-            color: "#999999"
-            x: 20
-            width: parent.width - 40
-            height: 2
-            anchors.leftMargin: 20
-            anchors.topMargin: 30
+        Separator {
+            color: Theme.primaryColor
+            width: parent.width
+            anchors.horizontalCenter: parent.horizontalCenter
+            horizontalAlignment: Qt.AlignHCenter
         }
         Row {
             x: Theme.paddingSmall
