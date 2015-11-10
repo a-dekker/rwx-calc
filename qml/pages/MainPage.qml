@@ -96,9 +96,9 @@ Page {
 
     function rwxButtonPressed() {
         // user
-        var userReadVal
-        var userWriteVal
-        var userExecVal
+        var userReadVal = 0
+        var userWriteVal = 0
+        var userExecVal = 0
         if (readUser.checked)
             userReadVal = 4
         else
@@ -113,12 +113,12 @@ Page {
             userExecVal = 0
 
         // group
-        var groupReadVal
-        var groupWriteVal
-        var groupExecVal
-        var worldReadVal
-        var worldWriteVal
-        var worldExecVal
+        var groupReadVal = 0
+        var groupWriteVal = 0
+        var groupExecVal = 0
+        var worldReadVal = 0
+        var worldWriteVal = 0
+        var worldExecVal = 0
         if (readGroup.checked)
             groupReadVal = 4
         else
@@ -146,9 +146,9 @@ Page {
             worldExecVal = 0
 
         //special
-        var setuidVal
-        var setgidVal
-        var stickybitVal
+        var setuidVal = 0
+        var setgidVal = 0
+        var stickybitVal = 0
         if (setuid_portrait.checked)
             setuidVal = 4
         else
@@ -512,7 +512,7 @@ Page {
                                             ) + dialog.user_nbr + dialog.group_nbr
                                         + dialog.other_nbr + " " + allACL
                                 mainapp.rwxText = rwxbutton.text
-                                if (dialog.special_nbr === "0") {
+                                if (dialog.special_nbr === 0) {
                                     setuid_portrait.checked = false
                                     setuid_landscape.checked = false
                                     setgid_portrait.checked = false
@@ -520,7 +520,7 @@ Page {
                                     stickybit_portrait.checked = false
                                     stickybit_landscape.checked = false
                                 }
-                                if (dialog.special_nbr === "1") {
+                                if (dialog.special_nbr === 1) {
                                     setuid_portrait.checked = false
                                     setuid_landscape.checked = false
                                     setgid_portrait.checked = false
@@ -528,13 +528,13 @@ Page {
                                     stickybit_portrait.checked = true
                                     stickybit_landscape.checked = true
                                 }
-                                if (dialog.special_nbr === "2") {
+                                if (dialog.special_nbr === 2) {
                                     setgid_portrait.checked = true
                                     setgid_landscape.checked = true
                                     stickybit_portrait.checked = false
                                     stickybit_landscape.checked = false
                                 }
-                                if (dialog.special_nbr === "3") {
+                                if (dialog.special_nbr === 3) {
                                     setuid_portrait.checked = false
                                     setuid_landscape.checked = false
                                     setgid_portrait.checked = true
@@ -542,7 +542,7 @@ Page {
                                     stickybit_portrait.checked = true
                                     stickybit_landscape.checked = true
                                 }
-                                if (dialog.special_nbr === "4") {
+                                if (dialog.special_nbr === 4) {
                                     setuid_portrait.checked = true
                                     setuid_landscape.checked = true
                                     setgid_portrait.checked = false
@@ -550,7 +550,7 @@ Page {
                                     stickybit_portrait.checked = false
                                     stickybit_landscape.checked = false
                                 }
-                                if (dialog.special_nbr === "5") {
+                                if (dialog.special_nbr === 5) {
                                     setuid_portrait.checked = true
                                     setuid_landscape.checked = true
                                     setgid_portrait.checked = false
@@ -558,7 +558,7 @@ Page {
                                     stickybit_portrait.checked = true
                                     stickybit_landscape.checked = true
                                 }
-                                if (dialog.special_nbr === "6") {
+                                if (dialog.special_nbr === 6) {
                                     setuid_portrait.checked = true
                                     setuid_landscape.checked = true
                                     setgid_portrait.checked = true
@@ -566,7 +566,7 @@ Page {
                                     stickybit_portrait.checked = false
                                     stickybit_landscape.checked = false
                                 }
-                                if (dialog.special_nbr === "7") {
+                                if (dialog.special_nbr === 7) {
                                     setuid_portrait.checked = true
                                     setuid_landscape.checked = true
                                     setgid_portrait.checked = true
@@ -575,124 +575,124 @@ Page {
                                     stickybit_landscape.checked = true
                                 }
                                 // user
-                                if (dialog.user_nbr === "0") {
+                                if (dialog.user_nbr === 0) {
                                     readUser.checked = false
                                     writeUser.checked = false
                                     execUser.checked = false
                                 }
-                                if (dialog.user_nbr === "1") {
+                                if (dialog.user_nbr === 1) {
                                     readUser.checked = false
                                     writeUser.checked = false
                                     execUser.checked = true
                                 }
-                                if (dialog.user_nbr === "2") {
+                                if (dialog.user_nbr === 2) {
                                     readUser.checked = false
                                     writeUser.checked = true
                                     execUser.checked = false
                                 }
-                                if (dialog.user_nbr === "3") {
+                                if (dialog.user_nbr === 3) {
                                     readUser.checked = false
                                     writeUser.checked = true
                                     execUser.checked = true
                                 }
-                                if (dialog.user_nbr === "4") {
+                                if (dialog.user_nbr === 4) {
                                     readUser.checked = true
                                     writeUser.checked = false
                                     execUser.checked = false
                                 }
-                                if (dialog.user_nbr === "5") {
+                                if (dialog.user_nbr === 5) {
                                     readUser.checked = true
                                     writeUser.checked = false
                                     execUser.checked = true
                                 }
-                                if (dialog.user_nbr === "6") {
+                                if (dialog.user_nbr === 6) {
                                     readUser.checked = true
                                     writeUser.checked = true
                                     execUser.checked = false
                                 }
-                                if (dialog.user_nbr === "7") {
+                                if (dialog.user_nbr === 7) {
                                     readUser.checked = true
                                     writeUser.checked = true
                                     execUser.checked = true
                                 }
                                 // group
-                                if (dialog.group_nbr === "0") {
+                                if (dialog.group_nbr === 0) {
                                     readGroup.checked = false
                                     writeGroup.checked = false
                                     execGroup.checked = false
                                 }
-                                if (dialog.group_nbr === "1") {
+                                if (dialog.group_nbr === 1) {
                                     readGroup.checked = false
                                     writeGroup.checked = false
                                     execGroup.checked = true
                                 }
-                                if (dialog.group_nbr === "2") {
+                                if (dialog.group_nbr === 2) {
                                     readGroup.checked = false
                                     writeGroup.checked = true
                                     execGroup.checked = false
                                 }
-                                if (dialog.group_nbr === "3") {
+                                if (dialog.group_nbr === 3) {
                                     readGroup.checked = false
                                     writeGroup.checked = true
                                     execGroup.checked = true
                                 }
-                                if (dialog.group_nbr === "4") {
+                                if (dialog.group_nbr === 4) {
                                     readGroup.checked = true
                                     writeGroup.checked = false
                                     execGroup.checked = false
                                 }
-                                if (dialog.group_nbr === "5") {
+                                if (dialog.group_nbr === 5) {
                                     readGroup.checked = true
                                     writeGroup.checked = false
                                     execGroup.checked = true
                                 }
-                                if (dialog.group_nbr === "6") {
+                                if (dialog.group_nbr === 6) {
                                     readGroup.checked = true
                                     writeGroup.checked = true
                                     execGroup.checked = false
                                 }
-                                if (dialog.group_nbr === "7") {
+                                if (dialog.group_nbr === 7) {
                                     readGroup.checked = true
                                     writeGroup.checked = true
                                     execGroup.checked = true
                                 }
                                 // other
-                                if (dialog.other_nbr === "0") {
+                                if (dialog.other_nbr === 0) {
                                     readOther.checked = false
                                     writeOther.checked = false
                                     execOther.checked = false
                                 }
-                                if (dialog.other_nbr === "1") {
+                                if (dialog.other_nbr === 1) {
                                     readOther.checked = false
                                     writeOther.checked = false
                                     execOther.checked = true
                                 }
-                                if (dialog.other_nbr === "2") {
+                                if (dialog.other_nbr === 2) {
                                     readOther.checked = false
                                     writeOther.checked = true
                                     execOther.checked = false
                                 }
-                                if (dialog.other_nbr === "3") {
+                                if (dialog.other_nbr === 3) {
                                     readOther.checked = false
                                     writeOther.checked = true
                                     execOther.checked = true
                                 }
-                                if (dialog.other_nbr === "4") {
+                                if (dialog.other_nbr === 4) {
                                     readOther.checked = true
                                     writeOther.checked = false
                                     execOther.checked = false
                                 }
-                                if (dialog.other_nbr === "5") {
+                                if (dialog.other_nbr === 5) {
                                     readOther.checked = true
                                     writeOther.checked = false
                                     execOther.checked = true
                                 }
-                                if (dialog.other_nbr === "6") {
+                                if (dialog.other_nbr === 6) {
                                     readOther.checked = true
                                     writeOther.checked = true
                                     execOther.checked = false
                                 }
-                                if (dialog.other_nbr === "7") {
+                                if (dialog.other_nbr === 7) {
                                     readOther.checked = true
                                     writeOther.checked = true
                                     execOther.checked = true
