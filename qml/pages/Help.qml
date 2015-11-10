@@ -2,7 +2,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    id: page
+    id: helpPage
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width

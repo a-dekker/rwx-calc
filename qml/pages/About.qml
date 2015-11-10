@@ -2,7 +2,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    id: page
+    id: aboutpage
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -20,6 +21,7 @@ Page {
             }
             SectionHeader {
                 text: qsTr("Info")
+                visible: isPortrait
             }
             Separator {
                 color: Theme.primaryColor
@@ -49,6 +51,7 @@ Page {
             }
             SectionHeader {
                 text: qsTr("Author")
+                visible: isPortrait
             }
             Separator {
                 color: Theme.primaryColor
