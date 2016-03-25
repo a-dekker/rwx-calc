@@ -20,14 +20,25 @@ OTHER_FILES += qml/rwx-calc.qml \
     qml/cover/CoverPage.qml \
     rpm/rwx-calc.changes.in \
     rpm/rwx-calc.spec \
-    rpm/rwx-calc.yaml \
     harbour-rwx-calc.desktop \
-    harbour-rwx-calc.png \
     qml/pages/About.qml \
     qml/pages/MainPage.qml \
     qml/pages/Octal.qml \
     qml/pages/Help.qml
 
+icon86.files += icons/86x86/harbour-rwx-calc.png
+icon86.path = /usr/share/icons/hicolor/86x86/apps
+
+icon108.files += icons/108x108/harbour-rwx-calc.png
+icon108.path = /usr/share/icons/hicolor/108x108/apps
+
+icon128.files += icons/128x128/harbour-rwx-calc.png
+icon128.path = /usr/share/icons/hicolor/128x128/apps
+
+icon256.files += icons/256x256/harbour-rwx-calc.png
+icon256.path = /usr/share/icons/hicolor/256x256/apps
+
+INSTALLS += icon86 icon108 icon128 icon256
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n

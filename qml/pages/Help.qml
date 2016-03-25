@@ -4,6 +4,8 @@ import Sailfish.Silica 1.0
 Page {
     id: helpPage
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
+    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
+                               Screen.sizeCategory === Screen.ExtraLarge
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -77,7 +79,7 @@ Page {
                 The sticky bit is represented with a lower-case \"t\" in the output of ls.  \
                 In cases where it has no effect it is represented with an upper-case \"T\".<br>"
 
-                font.pixelSize: Theme.fontSizeExtraSmall
+                font.pixelSize: largeScreen ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 wrapMode: Text.Wrap
             }
         }

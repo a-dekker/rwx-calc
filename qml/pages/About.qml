@@ -4,6 +4,8 @@ import Sailfish.Silica 1.0
 Page {
     id: aboutpage
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
+    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
+                               Screen.sizeCategory === Screen.ExtraLarge
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -21,7 +23,7 @@ Page {
             }
             SectionHeader {
                 text: qsTr("Info")
-                visible: isPortrait
+                visible: isPortrait || largeScreen
             }
             Separator {
                 color: Theme.primaryColor
@@ -36,9 +38,10 @@ Page {
             }
             Image {
                anchors.horizontalCenter: parent.horizontalCenter
-               source: "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png"
+               source: largeScreen ? "/usr/share/icons/hicolor/256x256/apps/harbour-rwx-calc.png" : "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png"
             }
             Label {
+                font.pixelSize: largeScreen ? Theme.fontSizeLarge : Theme.fontSizeMedium
                 text: qsTr("Version") + " " + version
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.secondaryHighlightColor
@@ -51,7 +54,7 @@ Page {
             }
             SectionHeader {
                 text: qsTr("Author")
-                visible: isPortrait
+                visible: isPortrait || largeScreen
             }
             Separator {
                 color: Theme.primaryColor

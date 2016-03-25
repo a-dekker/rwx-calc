@@ -5,6 +5,8 @@ Dialog {
     id: diaVal
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
                          | Orientation.LandscapeInverted
+    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
+                               Screen.sizeCategory === Screen.ExtraLarge
     property int special_nbr: 0
     property int user_nbr: 0
     property int group_nbr: 0
@@ -17,7 +19,6 @@ Dialog {
     }
 
     onRejected: {
-
         //reject
     }
 
@@ -34,7 +35,7 @@ Dialog {
         Column {
             id: col
             // set spacing considering the width/height ratio
-            spacing: isPortrait ? (parent.height / parent.width > 1.6 ? Theme.paddingMedium : Theme.paddingSmall) : -Theme.paddingSmall
+            spacing: isPortrait ? (largeScreen ? Theme.paddingLarge : Theme.paddingSmall) : (largeScreen ? Theme.paddingLarge : -Theme.paddingSmall)
             width: parent.width
             DialogHeader {
                 //acceptText: "Set as Default"
@@ -44,7 +45,7 @@ Dialog {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Qt.AlignHCenter
-                visible: isPortrait
+                visible: isPortrait || largeScreen
             }
             Row {
                 x: Theme.paddingLarge
@@ -78,7 +79,7 @@ Dialog {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Qt.AlignHCenter
-                visible: isPortrait
+                visible: isPortrait || largeScreen
             }
             Row {
                 x: Theme.paddingSmall

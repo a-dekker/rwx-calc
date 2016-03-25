@@ -5,6 +5,8 @@ Page {
     id: page
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
                          | Orientation.LandscapeInverted
+    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
+                               Screen.sizeCategory === Screen.ExtraLarge
 
     function getACL(specialval, userval, groupval, otherval) {
         var userACL = "---"
@@ -198,7 +200,7 @@ Page {
 
             width: page.width
             // set spacing considering the width/height ratio
-            spacing: page.height / page.width > 1.6 ? Theme.paddingMedium : Theme.paddingSmall
+            spacing: largeScreen ? Theme.paddingLarge : Theme.paddingSmall
             PageHeader {
                 title: qsTr("rwx-calc")
             }
