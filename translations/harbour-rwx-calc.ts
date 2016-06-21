@@ -27,38 +27,38 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="184"/>
+        <location filename="../qml/pages/MainPage.qml" line="307"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <location filename="../qml/pages/MainPage.qml" line="311"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="205"/>
+        <location filename="../qml/pages/MainPage.qml" line="328"/>
         <source>rwx-calc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="210"/>
+        <location filename="../qml/pages/MainPage.qml" line="333"/>
         <source>Permissions calculator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="239"/>
-        <location filename="../qml/pages/MainPage.qml" line="408"/>
+        <location filename="../qml/pages/MainPage.qml" line="362"/>
+        <location filename="../qml/pages/MainPage.qml" line="531"/>
         <source>Special</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="470"/>
+        <location filename="../qml/pages/MainPage.qml" line="593"/>
         <source>Absolute (octal) and symbolic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="482"/>
+        <location filename="../qml/pages/MainPage.qml" line="605"/>
         <source>
 Absolute (octal) &amp; symbolic</source>
         <translation type="unfinished"></translation>

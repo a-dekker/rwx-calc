@@ -5,95 +5,214 @@ Page {
     id: page
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
                          | Orientation.LandscapeInverted
-    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
-                               Screen.sizeCategory === Screen.ExtraLarge
+    property bool largeScreen: Screen.sizeCategory === Screen.Large
+                               || Screen.sizeCategory === Screen.ExtraLarge
 
-    function getACL(specialval, userval, groupval, otherval) {
-        var userACL = "---"
-        var groupACL = "---"
-        var otherACL = "---"
-        if (userval === 0)
-            userACL = "---"
-        if (userval === 1)
-            userACL = "--x"
-        if (userval === 2)
-            userACL = "-w-"
-        if (userval === 3)
-            userACL = "-wx"
-        if (userval === 4)
-            userACL = "r--"
-        if (userval === 5)
-            userACL = "r-x"
-        if (userval === 6)
-            userACL = "rw-"
-        if (userval === 7)
-            userACL = "rwx"
-        if (groupval === 0)
-            groupACL = "---"
-        if (groupval === 1)
-            groupACL = "--x"
-        if (groupval === 2)
-            groupACL = "-w-"
-        if (groupval === 3)
-            groupACL = "-wx"
-        if (groupval === 4)
-            groupACL = "r--"
-        if (groupval === 5)
-            groupACL = "r-x"
-        if (groupval === 6)
-            groupACL = "rw-"
-        if (groupval === 7)
-            groupACL = "rwx"
-        if (otherval === 0)
-            otherACL = "---"
-        if (otherval === 1)
-            otherACL = "--x"
-        if (otherval === 2)
-            otherACL = "-w-"
-        if (otherval === 3)
-            otherACL = "-wx"
-        if (otherval === 4)
-            otherACL = "r--"
-        if (otherval === 5)
-            otherACL = "r-x"
-        if (otherval === 6)
-            otherACL = "rw-"
-        if (otherval === 7)
-            otherACL = "rwx"
-        if (specialval === 4 || specialval === 5 || specialval === 7
-                || specialval === 6)
-            // setuid
-            if (userval === 7 || userval === 5 || userval === 3 || userval === 1)
-                // exec bit on user
-                userACL = userACL.substring(0,
-                                                2) + "s" + userACL.substring(3)
-            else
-                userACL = userACL.substring(0,
-                                                2) + "S" + userACL.substring(3)
-        if (specialval === 2 || specialval === 6 || specialval === 7
-                || specialval === 3)
-            // setgid
-            if (groupval === 7 || groupval === 5 || groupval === 3
-                    || groupval === 1)
-                // exec bit on group
-                groupACL = groupACL.substring(
-                            0, 2) + "s" + groupACL.substring(3)
-            else
-                groupACL = groupACL.substring(
-                            0, 2) + "S" + groupACL.substring(3)
-        if (specialval === 1 || specialval === 3 || specialval === 5
-                || specialval === 7)
-            // stickybit
-            if (otherval === 7 || otherval === 5 || otherval === 3
-                    || otherval === 1)
-                // exec bit on other
-                otherACL = otherACL.substring(
-                            0, 2) + "t" + otherACL.substring(3)
-            else
-                otherACL = otherACL.substring(
-                            0, 2) + "T" + otherACL.substring(3)
-        var allACL = userACL + groupACL + otherACL
-        return allACL
+    onStatusChanged: {
+        switch (status) {
+        case PageStatus.Active:
+            // add the octal page to the pagestack
+            pageStack.pushAttached(Qt.resolvedUrl("Octal.qml"))
+            break
+        case PageStatus.Deactivating:
+            mainapp.special_nbr = rwxbutton.text[0]
+            mainapp.user_nbr = rwxbutton.text[1]
+            mainapp.group_nbr = rwxbutton.text[2]
+            mainapp.other_nbr = rwxbutton.text[3]
+            break
+        case PageStatus.Activating:
+            var allACL = mainapp.getACL(mainapp.special_nbr, mainapp.user_nbr,
+                                mainapp.group_nbr, mainapp.other_nbr)
+            rwxbutton.text = mainapp.special_nbr.toString(
+                        ) + mainapp.user_nbr + mainapp.group_nbr + mainapp.other_nbr + " " + allACL
+            mainapp.rwxText = rwxbutton.text
+            if (mainapp.special_nbr === 0) {
+                setuid_portrait.checked = false
+                setuid_landscape.checked = false
+                setgid_portrait.checked = false
+                setgid_landscape.checked = false
+                stickybit_portrait.checked = false
+                stickybit_landscape.checked = false
+            }
+            if (mainapp.special_nbr === 1) {
+                setuid_portrait.checked = false
+                setuid_landscape.checked = false
+                setgid_portrait.checked = false
+                setgid_landscape.checked = false
+                stickybit_portrait.checked = true
+                stickybit_landscape.checked = true
+            }
+            if (mainapp.special_nbr === 2) {
+                setgid_portrait.checked = true
+                setgid_landscape.checked = true
+                stickybit_portrait.checked = false
+                stickybit_landscape.checked = false
+            }
+            if (mainapp.special_nbr === 3) {
+                setuid_portrait.checked = false
+                setuid_landscape.checked = false
+                setgid_portrait.checked = true
+                setgid_landscape.checked = true
+                stickybit_portrait.checked = true
+                stickybit_landscape.checked = true
+            }
+            if (mainapp.special_nbr === 4) {
+                setuid_portrait.checked = true
+                setuid_landscape.checked = true
+                setgid_portrait.checked = false
+                setgid_landscape.checked = false
+                stickybit_portrait.checked = false
+                stickybit_landscape.checked = false
+            }
+            if (mainapp.special_nbr === 5) {
+                setuid_portrait.checked = true
+                setuid_landscape.checked = true
+                setgid_portrait.checked = false
+                setgid_landscape.checked = false
+                stickybit_portrait.checked = true
+                stickybit_landscape.checked = true
+            }
+            if (mainapp.special_nbr === 6) {
+                setuid_portrait.checked = true
+                setuid_landscape.checked = true
+                setgid_portrait.checked = true
+                setgid_landscape.checked = true
+                stickybit_portrait.checked = false
+                stickybit_landscape.checked = false
+            }
+            if (mainapp.special_nbr === 7) {
+                setuid_portrait.checked = true
+                setuid_landscape.checked = true
+                setgid_portrait.checked = true
+                setgid_landscape.checked = true
+                stickybit_portrait.checked = true
+                stickybit_landscape.checked = true
+            }
+            // user
+            if (mainapp.user_nbr === 0) {
+                readUser.checked = false
+                writeUser.checked = false
+                execUser.checked = false
+            }
+            if (mainapp.user_nbr === 1) {
+                readUser.checked = false
+                writeUser.checked = false
+                execUser.checked = true
+            }
+            if (mainapp.user_nbr === 2) {
+                readUser.checked = false
+                writeUser.checked = true
+                execUser.checked = false
+            }
+            if (mainapp.user_nbr === 3) {
+                readUser.checked = false
+                writeUser.checked = true
+                execUser.checked = true
+            }
+            if (mainapp.user_nbr === 4) {
+                readUser.checked = true
+                writeUser.checked = false
+                execUser.checked = false
+            }
+            if (mainapp.user_nbr === 5) {
+                readUser.checked = true
+                writeUser.checked = false
+                execUser.checked = true
+            }
+            if (mainapp.user_nbr === 6) {
+                readUser.checked = true
+                writeUser.checked = true
+                execUser.checked = false
+            }
+            if (mainapp.user_nbr === 7) {
+                readUser.checked = true
+                writeUser.checked = true
+                execUser.checked = true
+            }
+            // group
+            if (mainapp.group_nbr === 0) {
+                readGroup.checked = false
+                writeGroup.checked = false
+                execGroup.checked = false
+            }
+            if (mainapp.group_nbr === 1) {
+                readGroup.checked = false
+                writeGroup.checked = false
+                execGroup.checked = true
+            }
+            if (mainapp.group_nbr === 2) {
+                readGroup.checked = false
+                writeGroup.checked = true
+                execGroup.checked = false
+            }
+            if (mainapp.group_nbr === 3) {
+                readGroup.checked = false
+                writeGroup.checked = true
+                execGroup.checked = true
+            }
+            if (mainapp.group_nbr === 4) {
+                readGroup.checked = true
+                writeGroup.checked = false
+                execGroup.checked = false
+            }
+            if (mainapp.group_nbr === 5) {
+                readGroup.checked = true
+                writeGroup.checked = false
+                execGroup.checked = true
+            }
+            if (mainapp.group_nbr === 6) {
+                readGroup.checked = true
+                writeGroup.checked = true
+                execGroup.checked = false
+            }
+            if (mainapp.group_nbr === 7) {
+                readGroup.checked = true
+                writeGroup.checked = true
+                execGroup.checked = true
+            }
+            // other
+            if (mainapp.other_nbr === 0) {
+                readOther.checked = false
+                writeOther.checked = false
+                execOther.checked = false
+            }
+            if (mainapp.other_nbr === 1) {
+                readOther.checked = false
+                writeOther.checked = false
+                execOther.checked = true
+            }
+            if (mainapp.other_nbr === 2) {
+                readOther.checked = false
+                writeOther.checked = true
+                execOther.checked = false
+            }
+            if (mainapp.other_nbr === 3) {
+                readOther.checked = false
+                writeOther.checked = true
+                execOther.checked = true
+            }
+            if (mainapp.other_nbr === 4) {
+                readOther.checked = true
+                writeOther.checked = false
+                execOther.checked = false
+            }
+            if (mainapp.other_nbr === 5) {
+                readOther.checked = true
+                writeOther.checked = false
+                execOther.checked = true
+            }
+            if (mainapp.other_nbr === 6) {
+                readOther.checked = true
+                writeOther.checked = true
+                execOther.checked = false
+            }
+            if (mainapp.other_nbr === 7) {
+                readOther.checked = true
+                writeOther.checked = true
+                execOther.checked = true
+            }
+        break
+        }
     }
 
     function rwxButtonPressed() {
@@ -168,11 +287,15 @@ Page {
         var groupVal = groupReadVal + groupWriteVal + groupExecVal
         var worldVal = worldReadVal + worldWriteVal + worldExecVal
 
-        var allACL = getACL(specialVal, userVal, groupVal, worldVal)
+        var allACL = mainapp.getACL(specialVal, userVal, groupVal, worldVal)
 
         rwxbutton.text = specialVal.toString(
                     ) + userVal + groupVal + worldVal + " " + allACL
         mainapp.rwxText = rwxbutton.text
+        mainapp.special_nbr = rwxbutton.text[0]
+        mainapp.user_nbr = rwxbutton.text[1]
+        mainapp.group_nbr = rwxbutton.text[2]
+        mainapp.other_nbr = rwxbutton.text[3]
     }
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
@@ -430,7 +553,7 @@ Page {
                         rwxButtonPressed()
                     }
                     visible: isPortrait
-                    width: parent.width / 3
+                    width: parent.width / 2.9
                 }
                 TextSwitch {
                     id: setgid_portrait
@@ -488,7 +611,7 @@ Page {
                     width: rwxbutton.width
                     Rectangle {
                         anchors.fill: parent
-                        opacity: 0.2
+                        opacity: 0.02
                         radius: 10.0
                     }
                     TextField {
@@ -497,210 +620,6 @@ Page {
                         font.pixelSize: Theme.fontSizeHuge
                         color: Theme.highlightColor
                         text: "0000 ---------"
-                        onClicked: {
-                            var dialog = pageStack.push(Qt.resolvedUrl(
-                                                            "Octal.qml"), {
-                                                            special_nbr: rwxbutton.text[0],
-                                                            user_nbr: rwxbutton.text[1],
-                                                            group_nbr: rwxbutton.text[2],
-                                                            other_nbr: rwxbutton.text[3]
-                                                        })
-                            dialog.accepted.connect(function () {
-                                var allACL = getACL(dialog.special_nbr,
-                                                    dialog.user_nbr,
-                                                    dialog.group_nbr,
-                                                    dialog.other_nbr)
-                                rwxbutton.text = dialog.special_nbr.toString(
-                                            ) + dialog.user_nbr + dialog.group_nbr
-                                        + dialog.other_nbr + " " + allACL
-                                mainapp.rwxText = rwxbutton.text
-                                if (dialog.special_nbr === 0) {
-                                    setuid_portrait.checked = false
-                                    setuid_landscape.checked = false
-                                    setgid_portrait.checked = false
-                                    setgid_landscape.checked = false
-                                    stickybit_portrait.checked = false
-                                    stickybit_landscape.checked = false
-                                }
-                                if (dialog.special_nbr === 1) {
-                                    setuid_portrait.checked = false
-                                    setuid_landscape.checked = false
-                                    setgid_portrait.checked = false
-                                    setgid_landscape.checked = false
-                                    stickybit_portrait.checked = true
-                                    stickybit_landscape.checked = true
-                                }
-                                if (dialog.special_nbr === 2) {
-                                    setgid_portrait.checked = true
-                                    setgid_landscape.checked = true
-                                    stickybit_portrait.checked = false
-                                    stickybit_landscape.checked = false
-                                }
-                                if (dialog.special_nbr === 3) {
-                                    setuid_portrait.checked = false
-                                    setuid_landscape.checked = false
-                                    setgid_portrait.checked = true
-                                    setgid_landscape.checked = true
-                                    stickybit_portrait.checked = true
-                                    stickybit_landscape.checked = true
-                                }
-                                if (dialog.special_nbr === 4) {
-                                    setuid_portrait.checked = true
-                                    setuid_landscape.checked = true
-                                    setgid_portrait.checked = false
-                                    setgid_landscape.checked = false
-                                    stickybit_portrait.checked = false
-                                    stickybit_landscape.checked = false
-                                }
-                                if (dialog.special_nbr === 5) {
-                                    setuid_portrait.checked = true
-                                    setuid_landscape.checked = true
-                                    setgid_portrait.checked = false
-                                    setgid_landscape.checked = false
-                                    stickybit_portrait.checked = true
-                                    stickybit_landscape.checked = true
-                                }
-                                if (dialog.special_nbr === 6) {
-                                    setuid_portrait.checked = true
-                                    setuid_landscape.checked = true
-                                    setgid_portrait.checked = true
-                                    setgid_landscape.checked = true
-                                    stickybit_portrait.checked = false
-                                    stickybit_landscape.checked = false
-                                }
-                                if (dialog.special_nbr === 7) {
-                                    setuid_portrait.checked = true
-                                    setuid_landscape.checked = true
-                                    setgid_portrait.checked = true
-                                    setgid_landscape.checked = true
-                                    stickybit_portrait.checked = true
-                                    stickybit_landscape.checked = true
-                                }
-                                // user
-                                if (dialog.user_nbr === 0) {
-                                    readUser.checked = false
-                                    writeUser.checked = false
-                                    execUser.checked = false
-                                }
-                                if (dialog.user_nbr === 1) {
-                                    readUser.checked = false
-                                    writeUser.checked = false
-                                    execUser.checked = true
-                                }
-                                if (dialog.user_nbr === 2) {
-                                    readUser.checked = false
-                                    writeUser.checked = true
-                                    execUser.checked = false
-                                }
-                                if (dialog.user_nbr === 3) {
-                                    readUser.checked = false
-                                    writeUser.checked = true
-                                    execUser.checked = true
-                                }
-                                if (dialog.user_nbr === 4) {
-                                    readUser.checked = true
-                                    writeUser.checked = false
-                                    execUser.checked = false
-                                }
-                                if (dialog.user_nbr === 5) {
-                                    readUser.checked = true
-                                    writeUser.checked = false
-                                    execUser.checked = true
-                                }
-                                if (dialog.user_nbr === 6) {
-                                    readUser.checked = true
-                                    writeUser.checked = true
-                                    execUser.checked = false
-                                }
-                                if (dialog.user_nbr === 7) {
-                                    readUser.checked = true
-                                    writeUser.checked = true
-                                    execUser.checked = true
-                                }
-                                // group
-                                if (dialog.group_nbr === 0) {
-                                    readGroup.checked = false
-                                    writeGroup.checked = false
-                                    execGroup.checked = false
-                                }
-                                if (dialog.group_nbr === 1) {
-                                    readGroup.checked = false
-                                    writeGroup.checked = false
-                                    execGroup.checked = true
-                                }
-                                if (dialog.group_nbr === 2) {
-                                    readGroup.checked = false
-                                    writeGroup.checked = true
-                                    execGroup.checked = false
-                                }
-                                if (dialog.group_nbr === 3) {
-                                    readGroup.checked = false
-                                    writeGroup.checked = true
-                                    execGroup.checked = true
-                                }
-                                if (dialog.group_nbr === 4) {
-                                    readGroup.checked = true
-                                    writeGroup.checked = false
-                                    execGroup.checked = false
-                                }
-                                if (dialog.group_nbr === 5) {
-                                    readGroup.checked = true
-                                    writeGroup.checked = false
-                                    execGroup.checked = true
-                                }
-                                if (dialog.group_nbr === 6) {
-                                    readGroup.checked = true
-                                    writeGroup.checked = true
-                                    execGroup.checked = false
-                                }
-                                if (dialog.group_nbr === 7) {
-                                    readGroup.checked = true
-                                    writeGroup.checked = true
-                                    execGroup.checked = true
-                                }
-                                // other
-                                if (dialog.other_nbr === 0) {
-                                    readOther.checked = false
-                                    writeOther.checked = false
-                                    execOther.checked = false
-                                }
-                                if (dialog.other_nbr === 1) {
-                                    readOther.checked = false
-                                    writeOther.checked = false
-                                    execOther.checked = true
-                                }
-                                if (dialog.other_nbr === 2) {
-                                    readOther.checked = false
-                                    writeOther.checked = true
-                                    execOther.checked = false
-                                }
-                                if (dialog.other_nbr === 3) {
-                                    readOther.checked = false
-                                    writeOther.checked = true
-                                    execOther.checked = true
-                                }
-                                if (dialog.other_nbr === 4) {
-                                    readOther.checked = true
-                                    writeOther.checked = false
-                                    execOther.checked = false
-                                }
-                                if (dialog.other_nbr === 5) {
-                                    readOther.checked = true
-                                    writeOther.checked = false
-                                    execOther.checked = true
-                                }
-                                if (dialog.other_nbr === 6) {
-                                    readOther.checked = true
-                                    writeOther.checked = true
-                                    execOther.checked = false
-                                }
-                                if (dialog.other_nbr === 7) {
-                                    readOther.checked = true
-                                    writeOther.checked = true
-                                    execOther.checked = true
-                                }
-                            })
-                        }
                     }
                 }
             }

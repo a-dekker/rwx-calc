@@ -36,6 +36,98 @@ ApplicationWindow
 {
     id: mainapp
     property string rwxText: '0000 ----------'
+    property int special_nbr: 0
+    property int user_nbr: 0
+    property int group_nbr: 0
+    property int other_nbr: 0
+
+    function getACL(specialval, userval, groupval, otherval) {
+        var userACL = "---"
+        var groupACL = "---"
+        var otherACL = "---"
+        if (userval === 0)
+            userACL = "---"
+        if (userval === 1)
+            userACL = "--x"
+        if (userval === 2)
+            userACL = "-w-"
+        if (userval === 3)
+            userACL = "-wx"
+        if (userval === 4)
+            userACL = "r--"
+        if (userval === 5)
+            userACL = "r-x"
+        if (userval === 6)
+            userACL = "rw-"
+        if (userval === 7)
+            userACL = "rwx"
+        if (groupval === 0)
+            groupACL = "---"
+        if (groupval === 1)
+            groupACL = "--x"
+        if (groupval === 2)
+            groupACL = "-w-"
+        if (groupval === 3)
+            groupACL = "-wx"
+        if (groupval === 4)
+            groupACL = "r--"
+        if (groupval === 5)
+            groupACL = "r-x"
+        if (groupval === 6)
+            groupACL = "rw-"
+        if (groupval === 7)
+            groupACL = "rwx"
+        if (otherval === 0)
+            otherACL = "---"
+        if (otherval === 1)
+            otherACL = "--x"
+        if (otherval === 2)
+            otherACL = "-w-"
+        if (otherval === 3)
+            otherACL = "-wx"
+        if (otherval === 4)
+            otherACL = "r--"
+        if (otherval === 5)
+            otherACL = "r-x"
+        if (otherval === 6)
+            otherACL = "rw-"
+        if (otherval === 7)
+            otherACL = "rwx"
+        if (specialval === 4 || specialval === 5 || specialval === 7
+                || specialval === 6)
+            // setuid
+            if (userval === 7 || userval === 5 || userval === 3
+                    || userval === 1)
+                // exec bit on user
+                userACL = userACL.substring(0, 2) + "s" + userACL.substring(3)
+            else
+                userACL = userACL.substring(0, 2) + "S" + userACL.substring(3)
+        if (specialval === 2 || specialval === 6 || specialval === 7
+                || specialval === 3)
+            // setgid
+            if (groupval === 7 || groupval === 5 || groupval === 3
+                    || groupval === 1)
+                // exec bit on group
+                groupACL = groupACL.substring(0,
+                                              2) + "s" + groupACL.substring(3)
+            else
+                groupACL = groupACL.substring(0,
+                                              2) + "S" + groupACL.substring(3)
+        if (specialval === 1 || specialval === 3 || specialval === 5
+                || specialval === 7)
+            // stickybit
+            if (otherval === 7 || otherval === 5 || otherval === 3
+                    || otherval === 1)
+                // exec bit on other
+                otherACL = otherACL.substring(0,
+                                              2) + "t" + otherACL.substring(3)
+            else
+                otherACL = otherACL.substring(0,
+                                              2) + "T" + otherACL.substring(3)
+        var allACL = userACL + groupACL + otherACL
+        return allACL
+    }
+
     initialPage: Component { MainPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }

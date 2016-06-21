@@ -37,8 +37,8 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
             Image {
-               anchors.horizontalCenter: parent.horizontalCenter
-               source: largeScreen ? "/usr/share/icons/hicolor/256x256/apps/harbour-rwx-calc.png" : "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: largeScreen ? "/usr/share/icons/hicolor/256x256/apps/harbour-rwx-calc.png" : "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png"
             }
             Label {
                 font.pixelSize: largeScreen ? Theme.fontSizeLarge : Theme.fontSizeMedium
@@ -63,7 +63,7 @@ Page {
                 horizontalAlignment: Qt.AlignHCenter
             }
             Label {
-                text: "© Arno Dekker 2014-2015"
+                text: "© Arno Dekker 2014-2016"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }

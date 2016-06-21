@@ -21,7 +21,7 @@ Page {
                 title: "Info"
             }
             Label {
-        width: parent.width - 40
+                width: parent.width - 40
                 x: Theme.paddingLarge
                 y: Theme.paddingLarge
                 text: "<html><b>Rwx-calc</b> helps you to calculate the file/directory permissions used in Unix like operating systems.<br> \

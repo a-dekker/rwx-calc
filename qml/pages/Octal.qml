@@ -1,25 +1,24 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Dialog {
+Page {
     id: diaVal
     allowedOrientations: Orientation.Portrait | Orientation.Landscape
                          | Orientation.LandscapeInverted
-    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
-                               Screen.sizeCategory === Screen.ExtraLarge
-    property int special_nbr: 0
-    property int user_nbr: 0
-    property int group_nbr: 0
-    property int other_nbr: 0
+    property bool largeScreen: Screen.sizeCategory === Screen.Large
+                               || Screen.sizeCategory === Screen.ExtraLarge
 
-    canAccept: true
-
-    onAccepted: {
-
-    }
-
-    onRejected: {
-        //reject
+    Connections {
+        target: Qt.application
+        onActiveChanged: {
+            if(!Qt.application.active) {
+                // reset text to have cover page up to date if we are minimized from this page
+                var allACL = mainapp.getACL(mainapp.special_nbr, mainapp.user_nbr,
+                                    mainapp.group_nbr, mainapp.other_nbr)
+                mainapp.rwxText = mainapp.special_nbr.toString(
+                            ) + mainapp.user_nbr + mainapp.group_nbr + mainapp.other_nbr + " " + allACL
+            }
+        }
     }
 
     SilicaFlickable {
@@ -37,7 +36,7 @@ Dialog {
             // set spacing considering the width/height ratio
             spacing: isPortrait ? (largeScreen ? Theme.paddingLarge : Theme.paddingSmall) : (largeScreen ? Theme.paddingLarge : -Theme.paddingSmall)
             width: parent.width
-            DialogHeader {
+            PageHeader {
                 //acceptText: "Set as Default"
             }
             Separator {
@@ -90,9 +89,9 @@ Dialog {
                     text: "0"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 0 ? true : false
+                    checked: mainapp.special_nbr === 0 ? true : false
                     onClicked: {
-                        special_nbr = 0
+                        mainapp.special_nbr = 0
                     }
                     width: parent.width / 4
                 }
@@ -101,10 +100,10 @@ Dialog {
                     text: "0"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 0 ? true : false
+                    checked: mainapp.user_nbr === 0 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 0
+                        mainapp.user_nbr = 0
                     }
                 }
                 TextSwitch {
@@ -112,10 +111,10 @@ Dialog {
                     text: "0"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 0 ? true : false
+                    checked: mainapp.group_nbr === 0 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 0
+                        mainapp.group_nbr = 0
                     }
                 }
                 TextSwitch {
@@ -123,10 +122,10 @@ Dialog {
                     text: "0"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 0 ? true : false
+                    checked: mainapp.other_nbr === 0 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 0
+                        mainapp.other_nbr = 0
                     }
                 }
             }
@@ -139,10 +138,10 @@ Dialog {
                     text: "1"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 1 ? true : false
+                    checked: mainapp.special_nbr === 1 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        special_nbr = 1
+                        mainapp.special_nbr = 1
                     }
                 }
                 TextSwitch {
@@ -150,10 +149,10 @@ Dialog {
                     text: "1"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 1 ? true : false
+                    checked: mainapp.user_nbr === 1 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 1
+                        mainapp.user_nbr = 1
                     }
                 }
                 TextSwitch {
@@ -161,10 +160,10 @@ Dialog {
                     text: "1"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 1 ? true : false
+                    checked: mainapp.group_nbr === 1 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 1
+                        mainapp.group_nbr = 1
                     }
                 }
                 TextSwitch {
@@ -172,10 +171,10 @@ Dialog {
                     text: "1"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 1 ? true : false
+                    checked: mainapp.other_nbr === 1 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 1
+                        mainapp.other_nbr = 1
                     }
                 }
             }
@@ -188,9 +187,9 @@ Dialog {
                     text: "2"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 2 ? true : false
+                    checked: mainapp.special_nbr === 2 ? true : false
                     onClicked: {
-                        special_nbr = 2
+                        mainapp.special_nbr = 2
                     }
                     width: parent.width / 4
                 }
@@ -199,10 +198,10 @@ Dialog {
                     text: "2"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 2 ? true : false
+                    checked: mainapp.user_nbr === 2 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 2
+                        mainapp.user_nbr = 2
                     }
                 }
                 TextSwitch {
@@ -210,10 +209,10 @@ Dialog {
                     text: "2"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 2 ? true : false
+                    checked: mainapp.group_nbr === 2 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 2
+                        mainapp.group_nbr = 2
                     }
                 }
                 TextSwitch {
@@ -221,10 +220,10 @@ Dialog {
                     text: "2"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 2 ? true : false
+                    checked: mainapp.other_nbr === 2 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 2
+                        mainapp.other_nbr = 2
                     }
                 }
             }
@@ -237,9 +236,9 @@ Dialog {
                     text: "3"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 3 ? true : false
+                    checked: mainapp.special_nbr === 3 ? true : false
                     onClicked: {
-                        special_nbr = 3
+                        mainapp.special_nbr = 3
                     }
                     width: parent.width / 4
                 }
@@ -248,10 +247,10 @@ Dialog {
                     text: "3"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 3 ? true : false
+                    checked: mainapp.user_nbr === 3 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 3
+                        mainapp.user_nbr = 3
                     }
                 }
                 TextSwitch {
@@ -259,10 +258,10 @@ Dialog {
                     text: "3"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 3 ? true : false
+                    checked: mainapp.group_nbr === 3 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 3
+                        mainapp.group_nbr = 3
                     }
                 }
                 TextSwitch {
@@ -270,10 +269,10 @@ Dialog {
                     text: "3"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 3 ? true : false
+                    checked: mainapp.other_nbr === 3 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 3
+                        mainapp.other_nbr = 3
                     }
                 }
             }
@@ -286,9 +285,9 @@ Dialog {
                     text: "4"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 4 ? true : false
+                    checked: mainapp.special_nbr === 4 ? true : false
                     onClicked: {
-                        special_nbr = 4
+                        mainapp.special_nbr = 4
                     }
                     width: parent.width / 4
                 }
@@ -297,10 +296,10 @@ Dialog {
                     text: "4"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 4 ? true : false
+                    checked: mainapp.user_nbr === 4 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 4
+                        mainapp.user_nbr = 4
                     }
                 }
                 TextSwitch {
@@ -308,10 +307,10 @@ Dialog {
                     text: "4"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 4 ? true : false
+                    checked: mainapp.group_nbr === 4 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 4
+                        mainapp.group_nbr = 4
                     }
                 }
                 TextSwitch {
@@ -319,10 +318,10 @@ Dialog {
                     text: "4"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 4 ? true : false
+                    checked: mainapp.other_nbr === 4 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 4
+                        mainapp.other_nbr = 4
                     }
                 }
             }
@@ -335,9 +334,9 @@ Dialog {
                     text: "5"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 5 ? true : false
+                    checked: mainapp.special_nbr === 5 ? true : false
                     onClicked: {
-                        special_nbr = 5
+                        mainapp.special_nbr = 5
                     }
                     width: parent.width / 4
                 }
@@ -346,10 +345,10 @@ Dialog {
                     text: "5"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 5 ? true : false
+                    checked: mainapp.user_nbr === 5 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 5
+                        mainapp.user_nbr = 5
                     }
                 }
                 TextSwitch {
@@ -357,10 +356,10 @@ Dialog {
                     text: "5"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 5 ? true : false
+                    checked: mainapp.group_nbr === 5 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 5
+                        mainapp.group_nbr = 5
                     }
                 }
                 TextSwitch {
@@ -368,10 +367,10 @@ Dialog {
                     text: "5"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 5 ? true : false
+                    checked: mainapp.other_nbr === 5 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 5
+                        mainapp.other_nbr = 5
                     }
                 }
             }
@@ -384,9 +383,9 @@ Dialog {
                     text: "6"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 6 ? true : false
+                    checked: mainapp.special_nbr === 6 ? true : false
                     onClicked: {
-                        special_nbr = 6
+                        mainapp.special_nbr = 6
                     }
                     width: parent.width / 4
                 }
@@ -395,10 +394,10 @@ Dialog {
                     text: "6"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 6 ? true : false
+                    checked: mainapp.user_nbr === 6 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 6
+                        mainapp.user_nbr = 6
                     }
                 }
                 TextSwitch {
@@ -406,10 +405,10 @@ Dialog {
                     text: "6"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 6 ? true : false
+                    checked: mainapp.group_nbr === 6 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 6
+                        mainapp.group_nbr = 6
                     }
                 }
                 TextSwitch {
@@ -417,10 +416,10 @@ Dialog {
                     text: "6"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 6 ? true : false
+                    checked: mainapp.other_nbr === 6 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 6
+                        mainapp.other_nbr = 6
                     }
                 }
             }
@@ -433,10 +432,10 @@ Dialog {
                     text: "7"
                     highlighted: checked
                     automaticCheck: false
-                    checked: special_nbr == 7 ? true : false
+                    checked: mainapp.special_nbr === 7 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        special_nbr = 7
+                        mainapp.special_nbr = 7
                     }
                 }
                 TextSwitch {
@@ -444,10 +443,10 @@ Dialog {
                     text: "7"
                     highlighted: checked
                     automaticCheck: false
-                    checked: user_nbr == 7 ? true : false
+                    checked: mainapp.user_nbr === 7 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        user_nbr = 7
+                        mainapp.user_nbr = 7
                     }
                 }
                 TextSwitch {
@@ -455,10 +454,10 @@ Dialog {
                     text: "7"
                     highlighted: checked
                     automaticCheck: false
-                    checked: group_nbr == 7 ? true : false
+                    checked: mainapp.group_nbr === 7 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        group_nbr = 7
+                        mainapp.group_nbr = 7
                     }
                 }
                 TextSwitch {
@@ -466,10 +465,10 @@ Dialog {
                     text: "7"
                     highlighted: checked
                     automaticCheck: false
-                    checked: other_nbr == 7 ? true : false
+                    checked: mainapp.other_nbr === 7 ? true : false
                     width: parent.width / 4
                     onClicked: {
-                        other_nbr = 7
+                        mainapp.other_nbr = 7
                     }
                 }
             }
