@@ -33,32 +33,37 @@
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="311"/>
+        <source>Umask explained</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="315"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="328"/>
+        <location filename="../qml/pages/MainPage.qml" line="332"/>
         <source>rwx-calc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="333"/>
+        <location filename="../qml/pages/MainPage.qml" line="337"/>
         <source>Permissions calculator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="362"/>
-        <location filename="../qml/pages/MainPage.qml" line="531"/>
+        <location filename="../qml/pages/MainPage.qml" line="366"/>
+        <location filename="../qml/pages/MainPage.qml" line="535"/>
         <source>Special</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="593"/>
+        <location filename="../qml/pages/MainPage.qml" line="597"/>
         <source>Absolute (octal) and symbolic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="605"/>
+        <location filename="../qml/pages/MainPage.qml" line="609"/>
         <source>
 Absolute (octal) &amp; symbolic</source>
         <translation type="unfinished"></translation>

@@ -77,7 +77,7 @@ Page {
                 In octal, the sticky bit is set with 1000 e.g: \"chmod 1755 path\".<br> \
                 The sticky bit has no effect if other does not have execute permissions.<br> \
                 The sticky bit is represented with a lower-case \"t\" in the output of ls.  \
-                In cases where it has no effect it is represented with an upper-case \"T\".<br>"
+                In cases where it has no effect it is represented with an upper-case \"T\".<br></html>"
 
                 font.pixelSize: largeScreen ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 wrapMode: Text.Wrap

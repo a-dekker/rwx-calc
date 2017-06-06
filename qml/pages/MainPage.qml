@@ -308,6 +308,10 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
             }
             MenuItem {
+                text: qsTr("Umask explained")
+                onClicked: pageStack.push(Qt.resolvedUrl("Umask.qml"))
+            }
+            MenuItem {
                 text: qsTr("Help")
                 onClicked: pageStack.push(Qt.resolvedUrl("Help.qml"))
             }
