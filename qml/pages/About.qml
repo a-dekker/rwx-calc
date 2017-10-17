@@ -38,7 +38,7 @@ Page {
             }
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: largeScreen ? "/usr/share/icons/hicolor/256x256/apps/harbour-rwx-calc.png" : "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png"
+                source: isLandscape ? (largeScreen ? "/usr/share/icons/hicolor/256x256/apps/harbour-rwx-calc.png" : "/usr/share/icons/hicolor/86x86/apps/harbour-rwx-calc.png") : (largeScreen ? "/usr/share/icons/hicolor/256x256/apps/harbour-rwx-calc.png" : "/usr/share/icons/hicolor/128x128/apps/harbour-rwx-calc.png")
             }
             Label {
                 font.pixelSize: largeScreen ? Theme.fontSizeLarge : Theme.fontSizeMedium

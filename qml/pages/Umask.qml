@@ -21,9 +21,6 @@ Page {
                 title: "Umask"
             }
             Label {
-                width: parent.width - 40
-                x: Theme.paddingLarge
-                y: Theme.paddingLarge
                 text: "<html>When you create a file or directory, the default file permissions assigned to the \
                 file or directory are controlled by the user mask.<br> \
                 The user mask is set by the umask command in a user initialization file. You can display the current \
@@ -36,6 +33,11 @@ Page {
                 </ul>"
                 font.pixelSize: largeScreen ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 wrapMode: Text.Wrap
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
             }
             Label {
                 width: parent.width - 40

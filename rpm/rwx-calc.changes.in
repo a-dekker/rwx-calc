@@ -8,6 +8,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Jun 27 2017 Arno Dekker <jack.tar@example.com> 0.0.5-1
+- Pulley menu also on second page
+- Small layout changes
+
 * Tue Jun 06 2017 Arno Dekker <jack.tar@example.com> 0.0.5-0
 - Added umask info page
 

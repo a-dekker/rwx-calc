@@ -31,6 +31,22 @@ Page {
         ScrollDecorator {
         }
 
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
+            }
+            MenuItem {
+                text: qsTr("Umask explained")
+                onClicked: pageStack.push(Qt.resolvedUrl("Umask.qml"))
+            }
+            MenuItem {
+                text: qsTr("Help")
+                onClicked: pageStack.push(Qt.resolvedUrl("Help.qml"))
+            }
+        }
+
         Column {
             id: col
             // set spacing considering the width/height ratio

@@ -69,4 +69,22 @@ Absolute (octal) &amp; symbolic</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>Octal</name>
+    <message>
+        <location filename="../qml/pages/Octal.qml" line="37"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Octal.qml" line="41"/>
+        <source>Umask explained</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Octal.qml" line="45"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

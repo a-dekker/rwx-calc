@@ -21,9 +21,6 @@ Page {
                 title: "Info"
             }
             Label {
-                width: parent.width - 40
-                x: Theme.paddingLarge
-                y: Theme.paddingLarge
                 text: "<html><b>Rwx-calc</b> helps you to calculate the file/directory permissions used in Unix like operating systems.<br> \
                 <h3>More info on this subject:</h3> \
                 <b><u>User:</u></b><br> \
@@ -81,6 +78,11 @@ Page {
 
                 font.pixelSize: largeScreen ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 wrapMode: Text.Wrap
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
             }
         }
     }
