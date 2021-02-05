@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import Sailfish.Silica 1.0
 
 Page {
@@ -63,7 +63,7 @@ Page {
                 horizontalAlignment: Qt.AlignHCenter
             }
             Label {
-                text: "© Arno Dekker 2014-2017"
+                text: "© Arno Dekker 2014-2021"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }

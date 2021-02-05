@@ -8,6 +8,8 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Fri Feb 05 2021 Arno Dekker <jack.tar@example.com> 0.0.6-1
+- Layout fix for SFOS 4.0
 * Tue Jun 27 2017 Arno Dekker <jack.tar@example.com> 0.0.5-1
 - Pulley menu also on second page
 - Small layout changes

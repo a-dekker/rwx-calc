@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import Sailfish.Silica 1.0
 
 Page {
@@ -618,9 +618,8 @@ Page {
                         opacity: 0.02
                         radius: 10.0
                     }
-                    TextField {
+                    Label {
                         id: rwxbutton
-                        readOnly: true
                         font.pixelSize: Theme.fontSizeHuge
                         color: Theme.highlightColor
                         text: "0000 ---------"
