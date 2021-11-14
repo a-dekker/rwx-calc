@@ -5,3 +5,7 @@ Name=rwx-calc
 Icon=harbour-rwx-calc
 Exec=harbour-rwx-calc
 
+[X-Sailjail]
+OrganizationName=org.adekker
+ApplicationName=rwx-calc
+Permissions=

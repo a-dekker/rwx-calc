@@ -8,6 +8,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Nov 14 2021 Arno Dekker <jack.tar@example.com> 0.0.8-1
+- Changes for sailjail compliancy
+
+* Fri Feb 05 2021 Arno Dekker <jack.tar@example.com> 0.0.7-1
+- Added Swedish translation
+
 * Fri Feb 05 2021 Arno Dekker <jack.tar@example.com> 0.0.6-1
 - Layout fix for SFOS 4.0
 * Tue Jun 27 2017 Arno Dekker <jack.tar@example.com> 0.0.5-1

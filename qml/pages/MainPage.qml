@@ -3,8 +3,6 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-    allowedOrientations: Orientation.Portrait | Orientation.Landscape
-                         | Orientation.LandscapeInverted
     property bool largeScreen: Screen.sizeCategory === Screen.Large
                                || Screen.sizeCategory === Screen.ExtraLarge
 

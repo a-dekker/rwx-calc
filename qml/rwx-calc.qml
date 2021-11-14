@@ -128,6 +128,9 @@ ApplicationWindow {
         return allACL
     }
 
+    allowedOrientations: defaultAllowedOrientations
+    _defaultPageOrientations: defaultAllowedOrientations
+
     initialPage: Component {
         MainPage {}
     }

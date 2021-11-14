@@ -3,20 +3,21 @@ import Sailfish.Silica 1.0
 
 Page {
     id: diaVal
-    allowedOrientations: Orientation.Portrait | Orientation.Landscape
-                         | Orientation.LandscapeInverted
     property bool largeScreen: Screen.sizeCategory === Screen.Large
                                || Screen.sizeCategory === Screen.ExtraLarge
 
     Connections {
         target: Qt.application
         onActiveChanged: {
-            if(!Qt.application.active) {
+            if (!Qt.application.active) {
                 // reset text to have cover page up to date if we are minimized from this page
-                var allACL = mainapp.getACL(mainapp.special_nbr, mainapp.user_nbr,
-                                    mainapp.group_nbr, mainapp.other_nbr)
+                var allACL = mainapp.getACL(mainapp.special_nbr,
+                                            mainapp.user_nbr,
+                                            mainapp.group_nbr,
+                                            mainapp.other_nbr)
                 mainapp.rwxText = mainapp.special_nbr.toString(
-                            ) + mainapp.user_nbr + mainapp.group_nbr + mainapp.other_nbr + " " + allACL
+                            ) + mainapp.user_nbr + mainapp.group_nbr
+                        + mainapp.other_nbr + " " + allACL
             }
         }
     }
@@ -28,8 +29,7 @@ Page {
 
         clip: true
 
-        ScrollDecorator {
-        }
+        ScrollDecorator {}
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
@@ -52,8 +52,7 @@ Page {
             // set spacing considering the width/height ratio
             spacing: isPortrait ? (largeScreen ? Theme.paddingLarge : Theme.paddingSmall) : (largeScreen ? Theme.paddingLarge : -Theme.paddingSmall)
             width: parent.width
-            PageHeader {
-                //acceptText: "Set as Default"
+            PageHeader {//acceptText: "Set as Default"
             }
             Separator {
                 color: Theme.primaryColor

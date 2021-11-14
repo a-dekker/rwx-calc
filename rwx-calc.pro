@@ -26,6 +26,12 @@ OTHER_FILES += qml/rwx-calc.qml \
     qml/pages/Octal.qml \
     qml/pages/Help.qml
 
+isEmpty(VERSION) {
+    VERSION = $$system( egrep "^Version:\|^Release:" rpm/rwx-calc.spec |tr -d "[A-Z][a-z]: " | tr "\\\n" "." | sed "s/\.$//g"| tr -d "[:space:]")
+    message("VERSION is unset, assuming $$VERSION")
+}
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+
 icon86.files += icons/86x86/harbour-rwx-calc.png
 icon86.path = /usr/share/icons/hicolor/86x86/apps
 
@@ -42,9 +48,19 @@ icon256.files += icons/256x256/harbour-rwx-calc.png
 icon256.path = /usr/share/icons/hicolor/256x256/apps
 
 INSTALLS += icon86 icon108 icon128 icon172 icon256
+
+TRANSLATIONS = translations/harbour-rwx-calc-sv.ts
+# only include these files for translation:
+lupdate_only {
+    SOURCES = qml/*.qml \
+              qml/pages/*.qml
+}
+
+translations.files = translations
+translations.path = $${DEPLOYMENT_PATH}
+
+HEADERS += \
+
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-# TRANSLATIONS += translations/rwx-calc-de.ts
-
-HEADERS += \
