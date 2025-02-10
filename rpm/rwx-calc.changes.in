@@ -8,6 +8,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Feb 10 2025 Arno Dekker <jack.tar@example.com> 0.0.9-1
+- No longer rotate coverpage in landscape
+- Switch to sf-docked-tab-bar by Mirian Margiani instead of attached page
+
 * Sun Nov 14 2021 Arno Dekker <jack.tar@example.com> 0.0.8-1
 - Changes for sailjail compliancy
 

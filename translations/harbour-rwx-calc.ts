@@ -4,22 +4,22 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/pages/About.qml" line="22"/>
+        <location filename="../qml/pages/About.qml" line="20"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="25"/>
+        <location filename="../qml/pages/About.qml" line="23"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="45"/>
+        <location filename="../qml/pages/About.qml" line="43"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="56"/>
+        <location filename="../qml/pages/About.qml" line="54"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
@@ -27,63 +27,61 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="307"/>
+        <location filename="../qml/pages/MainPage.qml" line="15"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="311"/>
+        <location filename="../qml/pages/MainPage.qml" line="19"/>
         <source>Umask explained</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="315"/>
+        <location filename="../qml/pages/MainPage.qml" line="23"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>Rwx</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="332"/>
+        <location filename="../qml/pages/Rwx.qml" line="314"/>
         <source>rwx-calc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="337"/>
+        <location filename="../qml/pages/Rwx.qml" line="319"/>
         <source>Permissions calculator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="366"/>
-        <location filename="../qml/pages/MainPage.qml" line="535"/>
+        <location filename="../qml/pages/Rwx.qml" line="348"/>
+        <location filename="../qml/pages/Rwx.qml" line="517"/>
         <source>Special</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="597"/>
+        <location filename="../qml/pages/Rwx.qml" line="579"/>
         <source>Absolute (octal) and symbolic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="609"/>
+        <location filename="../qml/pages/Rwx.qml" line="591"/>
         <source>
 Absolute (octal) &amp; symbolic</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>Octal</name>
+    <name>rwx-calc</name>
     <message>
-        <location filename="../qml/pages/Octal.qml" line="37"/>
-        <source>About</source>
+        <location filename="../qml/rwx-calc.qml" line="149"/>
+        <source>Symbolic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Octal.qml" line="41"/>
-        <source>Umask explained</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Octal.qml" line="45"/>
-        <source>Help</source>
+        <location filename="../qml/rwx-calc.qml" line="154"/>
+        <source>Octal</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

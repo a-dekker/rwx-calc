@@ -10,8 +10,7 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
-        VerticalScrollDecorator {
-        }
+        VerticalScrollDecorator {}
 
         Column {
             id: col
@@ -62,7 +61,7 @@ Page {
                 horizontalAlignment: Qt.AlignHCenter
             }
             Label {
-                text: "© Arno Dekker 2014-2021"
+                text: "© Arno Dekker 2014-" + buildyear
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }

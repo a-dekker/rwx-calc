@@ -23,14 +23,18 @@ OTHER_FILES += qml/rwx-calc.qml \
     harbour-rwx-calc.desktop \
     qml/pages/About.qml \
     qml/pages/MainPage.qml \
+    qml/pages/Rwx.qml \
     qml/pages/Octal.qml \
     qml/pages/Help.qml
 
 isEmpty(VERSION) {
-    VERSION = $$system( egrep "^Version:\|^Release:" rpm/rwx-calc.spec |tr -d "[A-Z][a-z]: " | tr "\\\n" "." | sed "s/\.$//g"| tr -d "[:space:]")
+    VERSION = $$system( egrep "^Version:\|^Release:" rpm/rwx-calc.spec |tr -d "[A-Z][a-z]: " | tr "\\\n" "-" | sed "s/\.$//g"| tr -d "[:space:]")
     message("VERSION is unset, assuming $$VERSION")
 }
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += BUILD_YEAR=$$system(date '+%Y')
+
+DISTFILES += qml/sf-docked-tab-bar/*.qml
 
 icon86.files += icons/86x86/harbour-rwx-calc.png
 icon86.path = /usr/share/icons/hicolor/86x86/apps

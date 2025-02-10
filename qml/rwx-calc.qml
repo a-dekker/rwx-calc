@@ -32,6 +32,7 @@
 import QtQuick 2.5
 import Sailfish.Silica 1.0
 import "pages"
+import "sf-docked-tab-bar"
 
 ApplicationWindow {
     id: mainapp
@@ -40,6 +41,10 @@ ApplicationWindow {
     property int user_nbr: 0
     property int group_nbr: 0
     property int other_nbr: 0
+    signal reReadInfo
+
+    property alias tabBar: _tabBar
+    readonly property string mainPageName: "MainPage"
 
     function getACL(specialval, userval, groupval, otherval) {
         var userACL = "---"
@@ -133,6 +138,22 @@ ApplicationWindow {
 
     initialPage: Component {
         MainPage {}
+    }
+    DockedTabBar {
+        id: _tabBar
+        enabledOnPage: "MainPage"
+        currentSelection: 0
+
+        DockedTabButton {
+            icon.source: "image://theme/icon-m-other"
+            label: qsTr("Symbolic")
+            fontSize: Theme.fontSizeSmall
+        }
+        DockedTabButton {
+            icon.source: "image://theme/icon-m-dialpad"
+            label: qsTr("Octal")
+            fontSize: Theme.fontSizeSmall
+        }
     }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }

@@ -13,7 +13,7 @@ Name:       harbour-rwx-calc
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Assistant for calculating Unix like file permissions
-Version:    0.8
+Version:    0.9
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -62,14 +62,13 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}
+%attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/%{name}/qml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 %{_datadir}/icons/hicolor/108x108/apps/%{name}.png
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-/usr/bin
 /usr/share/harbour-rwx-calc
 /usr/share/applications
 /usr/share/icons/hicolor/*/apps

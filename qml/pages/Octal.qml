@@ -1,7 +1,7 @@
 import QtQuick 2.5
 import Sailfish.Silica 1.0
 
-Page {
+Item {
     id: diaVal
     property bool largeScreen: Screen.sizeCategory === Screen.Large
                                || Screen.sizeCategory === Screen.ExtraLarge
@@ -31,22 +31,6 @@ Page {
 
         ScrollDecorator {}
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
-            }
-            MenuItem {
-                text: qsTr("Umask explained")
-                onClicked: pageStack.push(Qt.resolvedUrl("Umask.qml"))
-            }
-            MenuItem {
-                text: qsTr("Help")
-                onClicked: pageStack.push(Qt.resolvedUrl("Help.qml"))
-            }
-        }
-
         Column {
             id: col
             // set spacing considering the width/height ratio
@@ -64,9 +48,6 @@ Page {
             Row {
                 x: Theme.paddingLarge
                 width: parent.width
-                height: isPortrait ? (diaVal.height / diaVal.width
-                                      > 1.6 ? Theme.paddingLarge : Theme.paddingLarge
-                                              * 1.2) : Theme.paddingLarge
                 Label {
                     text: "   Special"
                     width: parent.width / 4
